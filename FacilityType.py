@@ -53,7 +53,7 @@ def getDataType(x):
         label="invalid"
     else:
         label="valid"
-    return x, typ, label
+    return str(x+', '+str(typ)+', '+ 'Facility Type, '+ label)
 
 
 
