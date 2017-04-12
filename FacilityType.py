@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 
-# scrip to clean the data in column 18 - Facility Type. The dictionary can be updated
-# to contain more values to check against, or can be completely removed to only 
-# check against blank values.
+#scrip to clean the data
 
+#import numpy as np
 
 import sys
 from pyspark import SparkContext
@@ -31,8 +30,9 @@ regexes = [
 
 
 def getValidFacilityType(FacilityType):
-    combined = "(" + ")|(".join(regexes) + ")"
-    if re.match(combined, FacilityType):
+    pattern = re.compile('[A-Z]|[a-z]|[0-9]|/|-| ')
+    combined = re.compile("(" + ")|(".join(regexes) + ")")
+    if FacilityType != "" and combined.match(FacilityType) and pattern.match(FacilityType):
         return True
     return False
 
@@ -40,7 +40,7 @@ def getValidFacilityType(FacilityType):
 def getDataType(x):
     label = "invalid"
     myVal = getValidFacilityType(x)
-    if myVal==True:
+    if myVal:
         typ="str"
     else:
         for typ, test in tests:
@@ -49,7 +49,7 @@ def getDataType(x):
             except ValueError:
                 continue
     # return(myVal)
-    if myVal==False:
+    if not myVal:
         label="invalid"
     else:
         label="valid"
