@@ -4,10 +4,7 @@ import sys
 from pyspark import SparkContext
 import csv
 
-# Cleaning Street Name (Column 10)
-# All entries with blanks or special characters except for
-# '\'' '.' '&' '-' and '/' will be invalid
-
+# Cleaning City Name (Column 16)
 
 import re
 
@@ -21,9 +18,10 @@ tests = [
 ]
 
 
-def getValid(StreetName):
-    pattern = re.compile("^(?:[A-Z0-9 \.\/&\'-])+$")
-    if StreetName != "" and pattern.match(StreetName):
+
+def getValid(City):
+    pattern = re.compile("^(?:[A-Z])+$")
+    if City != '' or pattern.match(City):
         return True
     return False
 
@@ -45,17 +43,15 @@ def getDataType(x):
     else:
         label = "valid"
     typ = str(typ).replace('<class','').strip('>').strip(' ').strip('\'')
-    return str(x + ', ' + str(typ) + ', ' + 'Street Address, ' + label)
-
-
+    return str(x + ', ' + str(typ) + ', ' + 'City Name, ' + label)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: StreetName.py <file>")
+        print("Usage: City.py <file>")
         exit(-1)
     sc = SparkContext()
     csvfile = sc.textFile("new_311.csv")
-    street = csvfile.mapPartitions(lambda x: csv.reader(x)).map(lambda x: x[9])
-    base_type=street.map(lambda x: getDataType(x))
-    base_type.saveAsTextFile("StreetName.txt")
+    addr = csvfile.mapPartitions(lambda x: csv.reader(x)).map(lambda x: x[16])
+    base_type=addr.map(lambda x: getDataType(x))
+    base_type.saveAsTextFile("City.txt")
 sc.stop()
