@@ -7,7 +7,6 @@ import csv
 from datetime import datetime
 import re
 
-
 tests = [
     # (Type, Test)
     (int, int),
@@ -16,31 +15,33 @@ tests = [
     (str, str)
 ]
 
-
-def getValidAgencyName(AgencyName):
-    pattern = re.compile('^[A-Za-z\d\s\/-]+$')
-    if AgencyName != "" and pattern.match(AgencyName):
-        return True
-    return False
-
-
 def getDataType(x):
-    #label = "invalid"
-    myVal = getValidAgencyName(x)
-    if myVal:
-        typ = "str"
-    else:
-        for typ, test in tests:
-            try:
-                test(x)
-            except ValueError:
-                continue
-    # return(myVal)
-    if not myVal:
-        label = "invalid"
-    else:
-        label = "valid"
-    return str(x+', '+str(typ)+', '+'Full Agency Name, '+label)
+    label = "invalid"
+
+    for typ, test in tests:
+        try:
+            test(x)
+            if typ == "str":
+                pattern = re.compile('^[A-Za-z\d\s\/-]+$')
+                if pattern.match(x):
+                    label = "valid"
+                    break
+                else:
+                    if x == '':
+                        label = "N/A"
+                    else:
+                        label = "invalid"
+                    break;
+            if typ == 'int':
+                break
+            if typ == 'float':
+                break
+            else:
+                break
+        except ValueError:
+            continue
+
+    return str(str(x)+', '+str(typ).replace('<class', '').strip('>')+', '+'Full Agency Name, '+label)
 
 
 if __name__ == "__main__":
