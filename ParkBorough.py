@@ -15,7 +15,9 @@ tests = [
     # (Type, Test)
     (int, int),
     (float, float),
-    (str, str)
+    (str, str),
+    (datetime, lambda value: datetime.strptime(value, "%Y/%m/%d"))
+
 ]
 
 boroughSet=[
@@ -26,33 +28,35 @@ boroughSet=[
     "QUEENS"
 ]
 
-
-def getValid(ParkBorough):
-    pattern = re.compile("^(?:[A-Za-z0-9 ])+$")
-    combined = re.compile("(" + ")|(".join(boroughSet) + ")")
-    if ParkBorough != "" and pattern.match(ParkBorough) and combined.match((ParkBorough)):
-        return True
-    return False
-
-
 def getDataType(x):
-    # label = "invalid"
-    myVal = getValid(x)
-    if myVal:
-        typ = "str"
-    else:
-        for typ, test in tests:
-            try:
-                test(x)
-            except ValueError:
-                continue
-    # return(myVal)
-    if not myVal:
-        label = "invalid"
-    else:
-        label = "valid"
-    typ = str(typ).replace('<class','').strip('>').strip(' ').strip('\'')
-    return str(x + ', ' + str(typ) + ', ' + 'Park Borough, ' + label)
+    label = "invalid"
+
+    for typ, test in tests:
+        try:
+            test(x)
+            if typ == str:
+                pattern = re.compile("^(?:[A-Za-z0-9 ])+$")
+                combined = re.compile("(" + ")|(".join(boroughSet) + ")")
+                if pattern.match(x) and combined.match((x)):
+                    label = "valid"
+                    break
+                else:
+                    if x == '':
+                        label = "N/A"
+                    else:
+                        label = "invalid"
+                    break;
+            if typ == int:
+                break
+            if typ == float:
+                break
+            else:
+                break
+
+        except ValueError:
+            continue
+
+    return str(str(x)+', '+str(typ).replace('<class', '').strip('>')+', '+'Park Borough, '+label)
 
 
 
