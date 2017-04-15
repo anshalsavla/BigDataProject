@@ -42,7 +42,7 @@ def getDataType(x):
 
         except ValueError:
             continue
-    return str(str(x)+', '+str(typ).replace('<class', '').strip('>')+', '+'Intersection Street No. 1, '+label)
+    return str(str(x)+', '+str(typ).replace('<class', '').strip('>')+', '+'Intersection Street No. 2, '+label)
 
 
 if __name__ == "__main__":
