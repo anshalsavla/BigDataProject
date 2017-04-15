@@ -10,13 +10,6 @@ tests = [
     # (Type, Test)
     (int, int),
     (float, float),
-    (str, str)
-]
-
-tests = [
-    # (Type, Test)
-    (int, int),
-    (float, float),
     (str, str),
     (datetime, lambda value: datetime.strptime(value, "%Y/%m/%d"))
 
@@ -51,7 +44,6 @@ def getDataType(x):
             continue
 
     return str(str(x)+', '+str(typ).replace('<class', '').strip('>')+', '+'Incident Address Description, '+label)
-
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
