@@ -3,13 +3,7 @@
 import sys
 from pyspark import SparkContext
 import csv
-
-# Cleaning Complaints Type (Column 9)
-# All entries with blanks or special characters are invalid.
-
-
 import re
-
 from datetime import datetime
 
 tests = [
@@ -19,33 +13,44 @@ tests = [
     (str, str)
 ]
 
+tests = [
+    # (Type, Test)
+    (int, int),
+    (float, float),
+    (str, str),
+    (datetime, lambda value: datetime.strptime(value, "%Y/%m/%d"))
 
-def getValid(IncidentAddress):
-    pattern = re.compile('^(?:[A-Z0-9 -])+$')
-    if IncidentAddress != "" and pattern.match(IncidentAddress):
-        return True
-    return False
+]
 
 
 def getDataType(x):
-    # label = "invalid"
-    myVal = getValid(x)
-    if myVal:
-        typ = "str"
-    else:
-        for typ, test in tests:
-            try:
-                test(x)
-            except ValueError:
-                continue
-    # return(myVal)
-    if not myVal:
-        label = "invalid"
-    else:
-        label = "valid"
-    typ = str(typ).replace('<class','').strip('>').strip(' ').strip('\'')
-    return str(x + ', ' + str(typ) + ', ' + 'Incident Address Description, ' + label)
+    label = "invalid"
 
+    for typ, test in tests:
+        try:
+            test(x)
+            if typ == str:
+                pattern = re.compile('^(?:[A-Z0-9 -])+$')
+                if pattern.match(x):
+                    label = "valid"
+                    break
+                else:
+                    if x == '':
+                        label = "N/A"
+                    else:
+                        label = "invalid"
+                    break;
+            if typ == int:
+                break
+            if typ == float:
+                break
+            else:
+                break
+
+        except ValueError:
+            continue
+
+    return str(str(x)+', '+str(typ).replace('<class', '').strip('>')+', '+'Incident Address Description, '+label)
 
 
 if __name__ == "__main__":
