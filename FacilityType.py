@@ -10,13 +10,12 @@ import csv
 from datetime import datetime
 import re
 
-
 tests = [
    #(Type, Test)
     (int, int),
     (float, float),
-    (datetime, lambda value: datetime.strptime(value, "%m/%d/%y")),
-    (str, str)
+    (str, str),
+    (datetime, lambda value: datetime.strptime(value, "%m/%d/%y"))
 ]
 
 
@@ -29,33 +28,28 @@ regexes = [
     ]
 
 
-def getValidFacilityType(FacilityType):
-    pattern = re.compile('[A-Z]|[a-z]|[0-9]|/|-| ')
-    combined = re.compile("(" + ")|(".join(regexes) + ")")
-    if FacilityType != "" and combined.match(FacilityType) and pattern.match(FacilityType):
-        return True
-    return False
-
 
 def getDataType(x):
     label = "invalid"
-    myVal = getValidFacilityType(x)
-    if myVal:
-        typ="str"
-    else:
-        for typ, test in tests:
-            try:
-                test(x)
-            except ValueError:
-                continue
-    # return(myVal)
-    if not myVal:
-        label="invalid"
-    else:
-        label="valid"
-    return str(x+', '+str(typ)+', '+ 'Facility Type, '+ label)
 
-
+    for typ, test in tests:
+        try:
+            test(x)
+            if typ == str:
+                pattern = re.compile('[A-Z]|[a-z]|[0-9]|/|-| ')
+                combined = re.compile("(" + ")|(".join(regexes) + ")")
+                if combined.match(x) and pattern.match(x):
+                    label = "valid"
+                    break
+                else:
+                    if x == '':
+                        label = "N/A"
+                    else:
+                        label = "invalid"
+                    break;
+        except ValueError:
+            continue
+    return str(x+', ' + str(typ).replace('<class', '').strip('>')+', ' + 'Facility Type, ' + label)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
