@@ -48,7 +48,10 @@ def getDataType(x):
                 continue
     # return(myVal)
     if not myVal:
-        label = "invalid"
+        if x == '':
+            label = 'N/A'
+        else:
+            label = "invalid"
     else:
         label = "valid"
     typ = str(typ).replace('<class','').strip('>').strip(' ').strip('\'')
