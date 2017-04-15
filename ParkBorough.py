@@ -25,7 +25,8 @@ boroughSet=[
     "MANHATTAN",
     "BRONX",
     "STATEN ISLAND",
-    "QUEENS"
+    "QUEENS",
+    "Unspecified"
 ]
 
 def getDataType(x):
