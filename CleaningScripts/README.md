@@ -43,11 +43,11 @@ The following are the steps performed in order to run the scripts:
 4. //use this command in the local worksation direcorty where the file is located to load it on to your dumbo working directory.
    scp <filename.type> NYU-netid@dumbo.es.its.nyu.edu:/<working directory on dumbo>      
 5. hfs -put <filename.type>        // this loads the data on HDFS
-6. //To load python 3.4.4 and set environment for spark to use python 3.4.4 
+6. //To load python 3.4.4 and set environment for spark to use python 3.4.4 \
    module load python/gnu/3.4.4    
    export PYSPARK_PYTHON=/share/apps/python/3.4.4/bin/python
    export PYTHONHASHSEED=0
    export SPARK_YARN_USER_ENV=PYTHONHASHSEED=0  
-7. spark2-submit filename.py file.txt   // to submit spark jobs, example: 'spark2-submit UniqueKey.txt 311.csv'
+7. spark2-submit filename.py file.txt   // to submit spark jobs, example: 'spark2-submit UniqueKey.txt 311.csv'\
 8. hfs -getmerge filename.txt           //to view the result, get the merged file on your dumbo directory.
   
