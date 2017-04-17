@@ -18,17 +18,17 @@ The output looks like :
 The report at :https://docs.google.com/document/d/1ylkNHauQbcB5xerP8VaqJcV20-Ads-gr1aYEoQJ2Gt0/edit?usp=sharing gives a detaied ddesciption of the data quality issues found with the dataset.
 
 Dependencies:
-Hadoop distribution Cloudera CDH 5.9.0 (Hadoop 2.6.0 with Yarn)
-Spark version 2.0
-Python version 3.4.4
-Python numpy library
-Python dateutil.parser library
-Python datetime library
-Python sys library
-Pyhton re library
-Python csv library
-Pyhthon SparkContext library
-Pyhton Pyspark library
+Hadoop distribution Cloudera CDH 5.9.0 (Hadoop 2.6.0 with Yarn)/
+Spark version 2.0/
+Python version 3.4.4/
+Python numpy library/
+Python dateutil.parser library/
+Python datetime library/
+Python sys library/
+Pyhton re library/
+Python csv library/
+Pyhthon SparkContext library/
+Pyhton Pyspark library/
 
 The following are the steps performed in order to run the scripts:
 
@@ -40,7 +40,7 @@ The following are the steps performed in order to run the scripts:
    export HSJ=hadoop-mapreduce/hadoop-streaming.jar\
    alias hjs='/usr/bin/hadoop jar $HAS/$HSJ'
 
-4. //use this command in the local worksation direcorty where the file is located to load it on to your dumbo working directory.
+4. //use this command in the local worksation direcorty where the file is located to load it on to your dumbo working directory./
    scp <filename.type> NYU-netid@dumbo.es.its.nyu.edu:/<working directory on dumbo>      
 5. hfs -put <filename.type>        // this loads the data on HDFS
 6. //To load python 3.4.4 and set environment for spark to use python 3.4.4 \
