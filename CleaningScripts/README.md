@@ -35,12 +35,13 @@ The following are the steps performed in order to run the scripts:
 1. ssh nyu_netid@hpc.nyu.edu       //log on to NYU's HPC bastion host
 2. ssh dumbo                       // log on to NYU's Hadoop node- dumbo
 3. //To run hadoop jobs
-   alias hfs='/usr/bin/hadoop fs '
-   export HAS=/opt/cloudera/parcels/CDH-5.9.0-1.cdh5.9.0.p0.23/lib
-   export HSJ=hadoop-mapreduce/hadoop-streaming.jar
-   alias hjs='/usr/bin/hadoop jar $HAS/$HSJ'
+   alias hfs='/usr/bin/hadoop fs '\
+   export HAS=/opt/cloudera/parcels/CDH-5.9.0-1.cdh5.9.0.p0.23/lib\
+   export HSJ=hadoop-mapreduce/hadoop-streaming.jar\
+   alias hjs='/usr/bin/hadoop jar $HAS/$HSJ'\
 
-4. scp <filename.type> NYU-netid@dumbo.es.its.nyu.edu:/<working directory on dumbo>      //use this command in the local worksation direcorty where the file is located to load it on to your dumbo working directory.
+4. //use this command in the local worksation direcorty where the file is located to load it on to your dumbo working directory.
+   scp <filename.type> NYU-netid@dumbo.es.its.nyu.edu:/<working directory on dumbo>      
 5. hfs -put <filename.type>        // this loads the data on HDFS
 6. //To load python 3.4.4 and set environment for spark to use python 3.4.4 
    module load python/gnu/3.4.4    
