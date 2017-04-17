@@ -4,8 +4,10 @@ Data: 311 complaints -https://data.cityofnewyork.us/Social-Services/311/wpe2-h2i
 
 Subdirectories:
     CleaningScripts
-        This directory contains 52 scripts to find dataquality issues in each of the 52 columns in the dataset and generates a txt file for 
-        each column indicating the [basetype, semantictype and label]. The output looks like:
+        This directory contains 52 scripts to find dataquality issues in each of the
+        52 columns in the dataset and generates a txt file for 
+        each column indicating the [basetype, semantictype and label]. 
+        The output looks like:
         ===========================================================================
         |          BaseType         |     Semantic Type        |      Label       |
         |---------------------------|--------------------------|------------------|
