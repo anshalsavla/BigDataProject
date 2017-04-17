@@ -17,4 +17,5 @@ The output looks like:
 Details on running the cleaning script are present in the README.md file in the CleaningScripts directory.
 
 -AnalysisScripts
+ This directory contains scripts used to extract information from the large dataset and helps summarize the data.
 
