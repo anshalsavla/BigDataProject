@@ -48,6 +48,6 @@ The following are the steps performed in order to run the scripts:
    export PYSPARK_PYTHON=/share/apps/python/3.4.4/bin/python
    export PYTHONHASHSEED=0
    export SPARK_YARN_USER_ENV=PYTHONHASHSEED=0  
-7. spark2-submit filename.py file.txt   // to submit spark jobs, example: 'spark2-submit UniqueKey.txt 311.csv'\
+7. spark2-submit filename.py file.txt   // to submit spark jobs, example: 'spark2-submit UniqueKey.txt 311.csv'
 8. hfs -getmerge filename.txt           //to view the result, get the merged file on your dumbo directory.
   
