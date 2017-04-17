@@ -22,5 +22,5 @@ export PYSPARK_PYTHON=/share/apps/python/3.4.4/bin/python export PYTHONHASHSEED=
 
 8. //If the csv files are needed on the local machine then simply perform scp command to ftech from dumbo to local machine.
 
-scp netId@dumbo.es.its.nyu.edu:/path/to/directory .
+   scp netId@dumbo.es.its.nyu.edu:/path/to/directory .
 
