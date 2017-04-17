@@ -86,7 +86,7 @@ if __name__ == "__main__":
         print("Usage: cleaning_date.py <file>")
         exit(-1)
     sc = SparkContext()
-    csvfile = sc.textFile("new_311.csv")
+    csvfile = sc.textFile(sys.argv[1],1)
     unique_key = csvfile.mapPartitions(lambda x: csv.reader(x)).map(lambda x: x[1])
     base_type=unique_key.map(lambda x: getDataType(x))
     base_type.saveAsTextFile("date1.txt")

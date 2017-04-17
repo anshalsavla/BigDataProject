@@ -51,9 +51,9 @@ if __name__ == "__main__":
         print("Usage: SchoolCity.py <file>")
         exit(-1)
     sc = SparkContext()
-    csvfile = sc.textFile("new_311.csv")
+    csvfile = sc.textFile(sys.argv[1],1)
     addr = csvfile.mapPartitions(lambda x: csv.reader(x)).map(lambda x: x[34])
     base_type=addr.map(lambda x: getDataType(x))
     base_type.saveAsTextFile("SchoolCity.txt")
-sc.stop()
+    sc.stop()
 

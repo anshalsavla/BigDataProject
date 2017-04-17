@@ -91,9 +91,9 @@ if __name__ == "__main__":
         print("Usage: ResolutionAUdate.py <file>")
         exit(-1)
     sc = SparkContext()
-    csvfile = sc.textFile("new_311.csv")
+    csvfile = sc.textFile(sys.argv[1],1)
     dates = csvfile.mapPartitions(lambda x: csv.reader(x)).map(lambda x: x[21])
     base_type=dates.map(lambda x: getDataType(x))
     base_type.saveAsTextFile("ResolutionAUdate.txt")
-sc.stop()
+    sc.stop()
 

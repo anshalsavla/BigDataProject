@@ -60,9 +60,9 @@ if __name__ == "__main__":
         print("Usage: Status.py <file>")
         exit(-1)
     sc = SparkContext()
-    csvfile = sc.textFile("new_311.csv")
+    csvfile = sc.textFile(sys.argv[1],1)
     street = csvfile.mapPartitions(lambda x: csv.reader(x)).map(lambda x: x[19])
     base_type=street.map(lambda x: getDataType(x))
     base_type.saveAsTextFile("Status.txt")
-sc.stop()
+    sc.stop()
 

@@ -59,9 +59,9 @@ if __name__ == "__main__":
         print("Usage: Landmark.py <file>")
         exit(-1)
     sc = SparkContext()
-    csvfile = sc.textFile("new_311.csv")
+    csvfile = sc.textFile(sys.argv[1],1)
     street = csvfile.mapPartitions(lambda x: csv.reader(x)).map(lambda x: x[17])
     base_type=street.map(lambda x: getDataType(x))
     base_type.saveAsTextFile("Landmark.txt")
-sc.stop()
+    sc.stop()
 

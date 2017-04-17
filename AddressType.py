@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+
 import sys
 from pyspark import SparkContext
 import csv
@@ -50,8 +51,8 @@ if __name__ == "__main__":
         print("Usage: AddressType.py <file>")
         exit(-1)
     sc = SparkContext()
-    csvfile = sc.textFile("new_311.csv")
+    csvfile = sc.textFile(sys.argv[1],1)
     addr = csvfile.mapPartitions(lambda x: csv.reader(x)).map(lambda x: x[15])
     base_type=addr.map(lambda x: getDataType(x))
     base_type.saveAsTextFile("AddressType.txt")
-sc.stop()
+    sc.stop()

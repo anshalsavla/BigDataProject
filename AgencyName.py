@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 # Cleaning column 4: Agency Name
+
 import sys
 from pyspark import SparkContext
 import csv
@@ -49,8 +50,8 @@ if __name__ == "__main__":
         print("Usage: AgencyName.py <file>")
         exit(-1)
     sc = SparkContext()
-    csvfile = sc.textFile("new_311.csv")
+    csvfile = sc.textFile(sys.argv[1],1)
     agency = csvfile.mapPartitions(lambda x: csv.reader(x)).map(lambda x: x[4])
     base_type=agency.map(lambda x: getDataType(x))
     base_type.saveAsTextFile("AgencyName.txt")
-sc.stop()
+    sc.stop()
