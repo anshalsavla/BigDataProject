@@ -18,17 +18,17 @@ The output looks like :
 The report at :https://docs.google.com/document/d/1ylkNHauQbcB5xerP8VaqJcV20-Ads-gr1aYEoQJ2Gt0/edit?usp=sharing gives a detaied ddesciption of the data quality issues found with the dataset.
 
 Dependencies:
-Hadoop distribution Cloudera CDH 5.9.0 (Hadoop 2.6.0 with Yarn)/
-Spark version 2.0/
-Python version 3.4.4/
-Python numpy library/
-Python dateutil.parser library/
-Python datetime library/
-Python sys library/
-Pyhton re library/
-Python csv library/
-Pyhthon SparkContext library/
-Pyhton Pyspark library/
+Hadoop distribution Cloudera CDH 5.9.0 (Hadoop 2.6.0 with Yarn) \n
+Spark version 2.0
+Python version 3.4.4
+Python numpy library
+Python dateutil.parser library
+Python datetime library
+Python sys library
+Pyhton re library
+Python csv library
+Pyhthon SparkContext library
+Pyhton Pyspark library
 
 The following are the steps performed in order to run the scripts:
 
