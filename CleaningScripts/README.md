@@ -38,7 +38,7 @@ The following are the steps performed in order to run the scripts:
    alias hfs='/usr/bin/hadoop fs '\
    export HAS=/opt/cloudera/parcels/CDH-5.9.0-1.cdh5.9.0.p0.23/lib\
    export HSJ=hadoop-mapreduce/hadoop-streaming.jar\
-   alias hjs='/usr/bin/hadoop jar $HAS/$HSJ'\
+   alias hjs='/usr/bin/hadoop jar $HAS/$HSJ'
 
 4. //use this command in the local worksation direcorty where the file is located to load it on to your dumbo working directory.
    scp <filename.type> NYU-netid@dumbo.es.its.nyu.edu:/<working directory on dumbo>      
@@ -48,6 +48,6 @@ The following are the steps performed in order to run the scripts:
    export PYSPARK_PYTHON=/share/apps/python/3.4.4/bin/python
    export PYTHONHASHSEED=0
    export SPARK_YARN_USER_ENV=PYTHONHASHSEED=0  
-9. spark2-submit filename.py file.txt   // to submit spark jobs, example: 'spark2-submit UniqueKey.txt 311.csv'
-10.hfs -getmerge filename.txt           //to view the result, get the merged file on your dumbo directory.
+7. spark2-submit filename.py file.txt   // to submit spark jobs, example: 'spark2-submit UniqueKey.txt 311.csv'
+8. hfs -getmerge filename.txt           //to view the result, get the merged file on your dumbo directory.
   
