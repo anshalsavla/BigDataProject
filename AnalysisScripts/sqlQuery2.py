@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-#scrip to clean the data
+#script to query data
 
 #import numpy as np
 
