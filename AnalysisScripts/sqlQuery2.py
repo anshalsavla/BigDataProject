@@ -129,7 +129,7 @@ if __name__ == "__main__":
         exit(-1)
     sc = SparkContext()
     sqlContext = SQLContext(sc)
-    csvfile = sc.textFile("new_311.csv")
+    csvfile = sc.textFile(sys.argv[1],1)
 
     ## Creating Agency RDD and Filtering only Valid Values
     key_val_agency = csvfile.mapPartitions(lambda x: csv.reader(x)).map(lambda x: (x[0], x[3]))
