@@ -16,7 +16,7 @@ Steps to put temperature.csv on to hfs-
 2. Log in to your dumbo account and type the following command:
    hfs -put filename 
    
-Submit the job:
+Submit the job: <br >
 spark2-submit hyp1.py 311.csv temperature.csv
 
 Get the result file to your dumbo account from hfs:
