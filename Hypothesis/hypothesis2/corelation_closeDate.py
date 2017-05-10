@@ -18,7 +18,6 @@ def main():
             nodays.append(int(row[2].strip(')')))
         except ValueError:
             continue
-    print(agency)
     print("Correlation coefficient for number of complaints to average number of days takes by department to close complaints.")
     print(np.corrcoef(complaint, nodays)[1, 0])
 
