@@ -16,4 +16,5 @@ Now import the output file to your local machine by using the following command-
 scp netId@dumbo.es.its.nyu.edu:/path/hyp2.csv .
 
 Following are the steps to find the correlation factor-
+
 python corelation_closeDate.py.  //make sure the code and hyp2.csv that your imported from dumbo are in the same directory on your local machine
