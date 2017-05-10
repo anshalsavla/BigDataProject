@@ -19,16 +19,16 @@ Steps to put temperature.csv on to hfs-
 Submit the job: <br >
 spark2-submit hyp1.py 311.csv temperature.csv
 
-Get the result file to your dumbo account from hfs:
+Get the result file to your dumbo account from hfs: <br >
 hfs -getmerge hyp1.csv hyp1.csv //Now after the jobs are done, get merged copy from hfs
 
-Now import the output file to your local machine by using the following command-
+Now import the output file to your local machine by using the following command- <br >
 scp netId@dumbo.es.its.nyu.edu:/path/hyp2.csv .
 
-Following are the steps to find the correlation factor-
+Following are the steps to find the correlation factor- <br >
 
 python corelation_Heating.py //make sure the code and hyp1.csv that you imported from dumbo are in the same directory on your local machine
-
+<br >
 Steps to run python scripts for plotting the two graphs-
 python plotting1_1.py       //make sure the code and hyp1.csv that you imported from dumbo are in the same directory on your local machine
 python plotting1_2.py       //make sure the code and hyp1.csv that you imported from dumbo are in the same directory on your local machine
