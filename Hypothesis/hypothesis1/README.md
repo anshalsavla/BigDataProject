@@ -6,18 +6,19 @@ ssh dumbo // log on to NYU's Hadoop node- dumbo
 
 //To run hadoop jobs alias hfs='/usr/bin/hadoop fs ' export HAS=/opt/cloudera/parcels/CDH-5.9.0-1.cdh5.9.0.p0.23/lib export HSJ=hadoop-mapreduce/hadoop-streaming.jar alias hjs='/usr/bin/hadoop jar $HAS/$HSJ'
 
-//To load python 3.4.4 and set environment for spark to use python 3.4.4 module load python/gnu/3.4.4 export PYSPARK_PYTHON=/share/apps/python/3.4.4/bin/python export PYTHONHASHSEED=0 export SPARK_YARN_USER_ENV=PYTHONHASHSEED=0
+//To load python 3.4.4 and set environment for spark to use python 3.4.4 
+___________________
+module load python/gnu/3.4.4 export PYSPARK_PYTHON=/share/apps/python/3.4.4/bin/python export PYTHONHASHSEED=0 export SPARK_YARN_USER_ENV=PYTHONHASHSEED=0
 
 
-____________________________________________
-DRUMIL
-Steps to put temperature.csv on to dumbo-
+
+Steps to put temperature.csv on to hfs-
+1. Execute the following command on your local terminal to upload the file to dumbo:
+   scp filename nyuid@dumbo.es.its.nyu.edu:/path/to/file/
+2. Log in to your dumbo account and type the following command:
+   hfs -put filename 
 
 
-Steps to put temperature.csv to hfs-
-hfs put temperature.csv
-
-___________________________________________
 
 spark2-submit hyp1.py 311.csv temperature.csv
 
