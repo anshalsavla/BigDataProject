@@ -31,7 +31,7 @@ def getValidWeatherDate(value):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: cleaning_date.py <file>")
+        print("Usage: hyp1.py <file>")
         exit(-1)
     sc = SparkContext()
     sqlContext = SQLContext(sc)
