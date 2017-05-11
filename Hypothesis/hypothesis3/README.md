@@ -17,4 +17,4 @@ scp netId@dumbo.es.its.nyu.edu:/path/hyp3.csv .
 
 Following are the steps to plot the results on a graph-
 
-python plotting2.py       //make sure this code and hyp3.csv that your imported from dumbo are in the same directory on your local machine
+python plotting3.py       //make sure this code and hyp3.csv that your imported from dumbo are in the same directory on your local machine
